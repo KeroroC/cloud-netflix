@@ -1,24 +1,24 @@
 package com.keroro.web.controller;
 
+import com.keroro.web.feign.DcClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author wangpeng
  * @since 2024年01月22日 22:09
  */
 @RestController
-public class DcController {
+public class ConsumerController {
 
-    private final RestTemplate restTemplate;
+    private final DcClient dcClient;
 
-    public DcController(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public ConsumerController(DcClient dcClient) {
+        this.dcClient = dcClient;
     }
 
     @GetMapping("/consumer")
     public String dc() {
-        return restTemplate.getForObject("http://eureka-client/dc", String.class);
+        return dcClient.consumer();
     }
 }
