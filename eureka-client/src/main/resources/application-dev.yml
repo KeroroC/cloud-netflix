@@ -1,0 +1,7 @@
+server:
+  port: 2001
+eureka:
+  client:
+    service-url:
+      # 注意这里不能是default-zone
+      defaultZone: http://localhost:1001/eureka/
