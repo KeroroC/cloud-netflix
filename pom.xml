@@ -19,6 +19,7 @@
         <module>eureka-server</module>
         <module>eureka-client</module>
         <module>eureka-consumer</module>
+        <module>config-server-git</module>
     </modules>
 
     <properties>
