@@ -7,3 +7,14 @@ spring:
         git:
           uri: https://gitee.com/keroro714/config-repo
 #          uri: https://github.com/KeroroC/config-repo
+encrypt:
+#  对称加密
+#  key: Uw{wb^;aU7AnGiY
+  # 非对称加密
+  key-store:
+    location: config-server.keystore
+    alias: config-server
+    # 密钥库口令
+    password: 123456
+    # 密钥口令
+    secret: 123456
