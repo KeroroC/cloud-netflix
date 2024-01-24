@@ -1,6 +1,7 @@
 package com.keroro.web.controller;
 
 import com.keroro.web.feign.DcClient;
+import com.keroro.web.service.ConsumerService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,21 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class ConsumerController {
 
-    private final DcClient dcClient;
-
     @Value("${info.databasePwd}")
     private String value;
 
     @Value("${info.name}")
     private String name;
 
-    public ConsumerController(DcClient dcClient) {
-        this.dcClient = dcClient;
+    private final ConsumerService consumerService;
+
+    public ConsumerController(ConsumerService consumerService) {
+        this.consumerService = consumerService;
     }
 
     @GetMapping("/consumer")
     public String dc() {
-        return dcClient.consumer();
+        return consumerService.dc();
     }
 
     @GetMapping("/pwd")

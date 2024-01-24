@@ -1,16 +1,21 @@
 package com.keroro;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication
-@EnableDiscoveryClient
+
+/**
+ * 注解@SpringCloudApplication包含了@SpringBootApplication，@EnableDiscoveryClient，@EnableCircuitBreaker
+ * 这也意味着一个Spring Cloud标准应用应包含服务发现以及断路器
+ */
+@EnableHystrix
 @EnableFeignClients
+@SpringCloudApplication
 public class EurekaConsumerApplication {
 
     @Bean
