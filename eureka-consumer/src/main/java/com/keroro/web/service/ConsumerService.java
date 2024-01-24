@@ -22,6 +22,10 @@ public class ConsumerService {
         return dcClient.consumer();
     }
 
+    /**
+     * 降级方法
+     * @return res
+     */
     public String fallback() {
         return "fallback";
     }
