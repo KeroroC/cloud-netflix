@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: turbine
+server:
+  port: 8989
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+turbine:
+  # 要监控的服务
+  app-config: eureka-consumer
+  # turbine集群名
+  cluster-name-expression: new String("default")
+  # 开启通过主机名和端口号的组合区分服务，默认是通过host区分，这会使得在本地调试的时候，本机上的不同服务聚合成一个服务来统计
+  combine-host-port: true
