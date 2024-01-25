@@ -22,6 +22,7 @@
         <module>config-server-git</module>
         <module>turbine</module>
         <module>api-gateway</module>
+        <module>cloud-stream</module>
     </modules>
 
     <properties>
