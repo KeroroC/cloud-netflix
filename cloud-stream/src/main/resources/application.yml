@@ -1,0 +1,19 @@
+server:
+  port: 1301
+spring:
+  application:
+    name: cloud-stream
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: testExchange
+          group: group1
+        output:
+          destination: testExchange
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: keroro
+    password: keroro
+    virtual-host: /
