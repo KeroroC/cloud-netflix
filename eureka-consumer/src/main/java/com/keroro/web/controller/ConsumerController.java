@@ -1,7 +1,8 @@
 package com.keroro.web.controller;
 
-import com.keroro.web.feign.DcClient;
 import com.keroro.web.service.ConsumerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RefreshScope
 public class ConsumerController {
+
+    private final Logger logger = LoggerFactory.getLogger(ConsumerController.class);
 
     @Value("${info.databasePwd}")
     private String value;
@@ -28,7 +31,8 @@ public class ConsumerController {
     }
 
     @GetMapping("/consumer")
-    public String dc() {
+    public String consumer() {
+        logger.info("eureka-consumer，触发了/consumer");
         return consumerService.dc();
     }
 

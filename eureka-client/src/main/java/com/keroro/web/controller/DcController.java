@@ -1,5 +1,7 @@
 package com.keroro.web.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DcController {
 
+    private final Logger logger = LoggerFactory.getLogger(DcController.class);
+
     private final DiscoveryClient discoveryClient;
 
     public DcController(DiscoveryClient discoveryClient) {
@@ -18,8 +22,8 @@ public class DcController {
     }
 
     @GetMapping("/dc")
-    public String dc() throws InterruptedException {
-        Thread.sleep(5000L);
+    public String dc() {
+        logger.info("eureka-client，触发了/dc");
         String services = "Services: " + discoveryClient.getServices();
         System.out.println(services);
         return services;
