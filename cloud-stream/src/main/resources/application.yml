@@ -3,17 +3,29 @@ server:
 spring:
   application:
     name: cloud-stream
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: testExchange
-          group: group1
-        output:
-          destination: testExchange
   rabbitmq:
     host: localhost
     port: 5672
     username: keroro
     password: keroro
     virtual-host: /
+  cloud:
+    stream:
+      bindings:
+        input:
+#          开启当前binding的消息分区功能
+#          consumer:
+#            partitioned: true
+          destination: testExchange
+          group: group1
+        output:
+          destination: testExchange
+#          producer:
+#            消息分区的表达式
+#            partition-key-expression: payload
+#            消息分区的数量
+#            partition-count: 2
+#      消息分区实例数
+#      instance-count: 2
+#      当前实例的索引
+#      instance-index: 0
