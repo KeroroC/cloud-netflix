@@ -23,6 +23,7 @@
         <module>turbine</module>
         <module>api-gateway</module>
         <module>cloud-stream</module>
+        <module>zipkin-server</module>
     </modules>
 
     <properties>
